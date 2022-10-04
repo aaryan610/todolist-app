@@ -12,9 +12,10 @@ export default function handler(req, res) {
     res.status(200).json(task);
   }
   else if (req.method == "PATCH") {
-    const {task} = req.body;
+    const {task,date} = req.body;
     const value = tasks.find((task) => task.id === parseInt(taskId));
     value.name = task;
+    value.date = date;
     res.status(200).json(value);
   }
 }

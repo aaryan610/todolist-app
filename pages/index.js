@@ -23,6 +23,7 @@ const Home = (props) => {
   const fetchSingleTask = async (taskId) => {
     const response = await fetch(`/api/tasks/${taskId}`);
     const data = await response.json();
+    console.log(data);
     setTask(data.name);
     setDate(data.date);
     setId(data.id);
@@ -31,7 +32,6 @@ const Home = (props) => {
 
   const submitTask = async (e) => {
     e.preventDefault();
-
     const response = await fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify({ task, date }),
@@ -43,6 +43,7 @@ const Home = (props) => {
     fetchTask();
     console.log(data);
     setTask("");
+    setDate("");
   };
 
   const editTask = async (e, taskId) => {
@@ -58,6 +59,7 @@ const Home = (props) => {
     fetchTask();
     console.log(data);
     setTask("");
+    setDate("");
   };
 
   const deleteTask = async (taskId) => {
