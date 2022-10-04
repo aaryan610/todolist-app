@@ -23,10 +23,8 @@ const Home = (props) => {
   const fetchSingleTask = async (taskId) => {
     const response = await fetch(`/api/tasks/${taskId}`);
     const data = await response.json();
-    console.log(data);
     setTask(data.name);
 
-    console.log(typeof data.date, "dsfhjjdfskl");
     var mydate = new Date(data.date);
 
     var dateString = new Date(
@@ -71,6 +69,7 @@ const Home = (props) => {
     console.log(data);
     setTask("");
     setDate("");
+    setAddButton(true);
   };
 
   const deleteTask = async (taskId) => {
