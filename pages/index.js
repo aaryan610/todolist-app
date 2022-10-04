@@ -116,7 +116,10 @@ const Home = (props) => {
               ? tasks.map((item, index) => {
                   return (
                     <div className="single-item bg-blue-100 rounded py-3 px-2 mt-2 flex justify-between items-center">
-                      <div>{item.name}</div>
+                      <div>
+                        <input type="checkbox" className="mr-2" />
+                        {item.name}
+                      </div>
                       <div className="buttons">
                         <button
                           type="button"
