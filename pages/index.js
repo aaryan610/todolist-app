@@ -72,6 +72,8 @@ const Home = (props) => {
     fetchTask();
   };
 
+  const handleCompletion = (index) => {};
+
   return (
     <>
       <main className="grid place-items-center h-screen">
@@ -117,9 +119,17 @@ const Home = (props) => {
             {tasks
               ? tasks.map((item, index) => {
                   return (
-                    <div className="single-item bg-blue-100 rounded py-3 px-2 mt-2 flex justify-between items-center">
+                    <div
+                      className="single-item bg-blue-100 rounded py-3 px-2 mt-2 flex justify-between items-center"
+                      key={index}
+                    >
                       <div>
-                        <input type="checkbox" className="mr-2" />
+                        <input
+                          type="checkbox"
+                          className="mr-2"
+                          checked={item.isCompleted}
+                          onChange={(e) => handleCompletion(index)}
+                        />
                         {item.name}
                       </div>
                       <div className="buttons">
