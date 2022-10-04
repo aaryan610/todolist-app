@@ -25,13 +25,18 @@ const Home = (props) => {
     const data = await response.json();
     console.log(data);
     setTask(data.name);
-    setDate(data.date);
+    
+    console.log(typeof(data.date),"dsfhjjdfskl")
+    var mydate = new Date(data.date);
+    console.log(mydate);
+    console.log(typeof date)
     setId(data.id);
     setAddButton(false);
   };
 
   const submitTask = async (e) => {
     e.preventDefault();
+    console.log(typeof(date))
     const response = await fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify({ task, date }),
