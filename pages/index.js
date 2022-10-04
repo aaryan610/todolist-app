@@ -25,18 +25,24 @@ const Home = (props) => {
     const data = await response.json();
     console.log(data);
     setTask(data.name);
-    
-    console.log(typeof(data.date),"dsfhjjdfskl")
+
+    console.log(typeof data.date, "dsfhjjdfskl");
     var mydate = new Date(data.date);
-    console.log(mydate);
-    console.log(typeof date)
+
+    var dateString = new Date(
+      mydate.getTime() - mydate.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .split("T")[0];
+    setDate(dateString);
+
     setId(data.id);
     setAddButton(false);
   };
 
   const submitTask = async (e) => {
     e.preventDefault();
-    console.log(typeof(date))
+    console.log(typeof date);
     const response = await fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify({ task, date }),
